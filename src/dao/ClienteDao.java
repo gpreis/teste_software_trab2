@@ -7,30 +7,34 @@ import java.util.List;
 import model.Cliente;
 import util.Conexao;
 
-public class ClienteDao {
+public class ClienteDao implements ClienteRepository{
 
-    public void inserir(Cliente cliente) {
-        String sql = "INSERT INTO cliente (nome, idade, email, ativo, idContaCorrente) VALUES (?, ?, ?, ?, ?)";
-
+    public boolean inserir(Cliente cliente) {
+        String sql = "INSERT INTO cliente (id, nome, idade, email, ativo, idContaCorrente) VALUES (?, ?, ?, ?, ?, ?)";
+        boolean flag = false;;
         try (Connection con = Conexao.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
             
-            stmt.setString(1, cliente.getNome());
-            stmt.setInt(2, cliente.getIdade());
-            stmt.setString(3, cliente.getEmail());
-            stmt.setBoolean(4, cliente.isAtivo());
+        	stmt.setInt(1, cliente.getId());
+            stmt.setString(2, cliente.getNome());
+            stmt.setInt(3, cliente.getIdade());
+            stmt.setString(4, cliente.getEmail());
+            stmt.setBoolean(5, cliente.isAtivo());
+            
             
             if (cliente.getIdContaCorrente() > 0) {
-                stmt.setInt(5, cliente.getIdContaCorrente());
+                stmt.setInt(6, cliente.getIdContaCorrente());
             } else {
-                stmt.setNull(5, Types.INTEGER);
+                stmt.setNull(6, Types.INTEGER);
             }
 
             stmt.executeUpdate();
+            flag=true;
         } catch (SQLException e) {
             System.out.println("Erro ao inserir cliente.");
             e.printStackTrace();
         }
+        return flag;
     }
 
     public List<Cliente> listar() {
@@ -62,6 +66,34 @@ public class ClienteDao {
 
     public Cliente buscarPorId(int id) {
         String sql = "SELECT * FROM cliente WHERE id = ?";
+        Cliente cliente = null;
+
+        try (Connection con = Conexao.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    cliente = new Cliente();
+                    cliente.setId(rs.getInt("id"));
+                    cliente.setNome(rs.getString("nome"));
+                    cliente.setIdade(rs.getInt("idade"));
+                    cliente.setEmail(rs.getString("email"));
+                    cliente.setAtivo(rs.getBoolean("ativo"));
+                    cliente.setIdContaCorrente(rs.getInt("idContaCorrente"));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar cliente.");
+            e.printStackTrace();
+        }
+
+        return cliente;
+    }
+    
+    public Cliente buscarPorIdConta(int id) {
+        String sql = "SELECT * FROM cliente WHERE idContaCorrente = ?";
         Cliente cliente = null;
 
         try (Connection con = Conexao.getConnection();

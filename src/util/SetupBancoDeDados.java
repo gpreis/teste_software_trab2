@@ -14,7 +14,7 @@ public class SetupBancoDeDados {
     public void tabelaCliente() {
         String sql = """
             CREATE TABLE IF NOT EXISTS cliente (
-                id SERIAL PRIMARY KEY,
+                id INT PRIMARY KEY,
                 nome VARCHAR(100) NOT NULL,
                 idade INT,
                 email VARCHAR(100),
@@ -37,7 +37,7 @@ public class SetupBancoDeDados {
     public void tabelaConta() {
         String sql = """
             CREATE TABLE IF NOT EXISTS conta (
-                id SERIAL PRIMARY KEY,
+                id INT PRIMARY KEY,
                 saldo DECIMAL(15,2) DEFAULT 0,
                 ativa BOOLEAN
             )

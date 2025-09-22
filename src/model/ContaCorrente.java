@@ -43,13 +43,11 @@ public class ContaCorrente {
 
 	@Override
 	public String toString() {
-		
-		String str = "========================="
-					+ "Id: " + this.id + "\n"
-					+ "Saldo: " + this.saldo + "\n"
-					+ "Status: " + (ativa?"Ativa":"Inativa") + "\n"
-					+ "=========================";
-		return str;
+	    return "ContaCorrente {\n" +
+	           "  Id: " + id + "\n" +
+	           "  Saldo: " + saldo + "\n" +
+	           "  Status: " + (ativa ? "Ativa" : "Inativa") + "\n" +
+	           "}";
 	}
 	
 }

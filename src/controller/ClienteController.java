@@ -2,48 +2,41 @@ package controller;
 
 import java.util.List;
 
-import dao.ClienteDao;
+import exception.ClienteInexistenteException;
+import exception.ClienteJaCadastradoException;
 import exception.IdadeNaoPermitidaException;
-import model.Cliente;
+import service.ClienteService;
 
 public class ClienteController {
 	
-    private ClienteDao clienteDao;
+    private ClienteService service;
     
-    public ClienteController() {
-    	
+
+    public ClienteController(ClienteService service) {
+       this.service = service;
     }
 
-    public ClienteController(ClienteDao clienteDao) {
-        this.clienteDao = clienteDao;
+    public void criarCliente(List<String> lista, boolean ativo) throws IdadeNaoPermitidaException, ClienteJaCadastradoException{
+    	this.service.registrarCliente(lista, ativo);
     }
-
-    public List<Cliente> getClientesDoBanco() {
-        return clienteDao.listar();
+    
+    public String buscarCliente(int id) throws ClienteInexistenteException{
+    	return this.service.buscarCliente(id);
     }
-
-    public Cliente pesquisaCliente(int idCliente) {
-        return clienteDao.buscarPorId(idCliente);
+    
+    public String buscarClientePorConta(int id) throws ClienteInexistenteException{
+    	return this.service.buscarClientePorConta(id);
     }
-
-    public void adicionaCliente(Cliente novoCliente) throws IdadeNaoPermitidaException {
-        validaIdade(novoCliente.getIdade());
-        clienteDao.inserir(novoCliente);
+    
+    public String listarClientes() throws ClienteInexistenteException{
+    	return this.service.listarClientes();
     }
-
-    public boolean removeCliente(int idCliente) {
-        return clienteDao.remover(idCliente);
+    
+    public int buscarContaDoCliente(int id) throws ClienteInexistenteException {
+    	return this.service.buscarContaDoCliente(id);
     }
-
-    public boolean clienteAtivo(int idCliente) {
-        Cliente cliente = clienteDao.buscarPorId(idCliente);
-        return cliente != null && cliente.isAtivo();
-    }
-
-    public boolean validaIdade(int idade) throws IdadeNaoPermitidaException {
-        if (idade < 18 || idade > 65) {
-            throw new IdadeNaoPermitidaException(IdadeNaoPermitidaException.MSG_IDADE_INVALIDA);
-        }
-        return true;
+    
+    public void removerCliente(int id) throws ClienteInexistenteException {
+    	this.service.removerCliente(id);
     }
 }

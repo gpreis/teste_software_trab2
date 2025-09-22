@@ -72,15 +72,21 @@ public class Cliente  {
 
 	@Override
 	public String toString() {
-		
-		String str ="=========================" 
-					+"Id: " + this.id + "\n"
-					+ "Nome: " + this.nome + "\n"
-					+ "Email: " + this.email + "\n"
-					+ "Idade: " + this.idade + "\n"
-					+ "Status: " + (ativo?"Ativo":"Inativo") + "\n"
-					+ "=========================";
-		return str;
+	    return "Cliente {\n" +
+	           "  Id: " + id + "\n" +
+	           "  Nome: " + nome + "\n" +
+	           "  Idade: " + idade + "\n" +
+	           "  Email: " + email + "\n" +
+	           "  Conta Corrente Id: " + idContaCorrente + "\n" +
+	           "  Status: " + (ativo ? "Ativo" : "Inativo") + "\n" +
+	           "}";
 	}
 	
-}
+	public String toStringBasic() {
+		return "Cliente {\n" +
+		           "  Id: " + id + "\n" +
+		           "  Nome: " + nome + "\n" +
+		           "}";
+		}
+	}
+	
