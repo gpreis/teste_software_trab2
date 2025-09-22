@@ -1,7 +1,9 @@
 package teste;
 
-import negocio.Cliente;
 import org.junit.Test;
+
+import model.Cliente;
+
 import static org.junit.Assert.*;
 
 public class ClienteTeste {

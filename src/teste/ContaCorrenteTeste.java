@@ -1,7 +1,9 @@
 package teste;
 
-import negocio.ContaCorrente;
 import org.junit.Test;
+
+import model.ContaCorrente;
+
 import static org.junit.Assert.*;
 
 public class ContaCorrenteTeste {
