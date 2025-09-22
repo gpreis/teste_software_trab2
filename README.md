@@ -42,3 +42,7 @@ Trabalho desenvolvido por:
 - Gabriel Pedot Reis
 - Klaus Bastian
 - Vitor Voltolini Da Silva
+
+## Uso de Inteligência Artificial
+
+Para o desenvolvimento dos testes do trabalho, ouve auxílio de  _autocomplete_  do copilot com o agente ChatGPT-4.1.
