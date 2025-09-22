@@ -36,6 +36,14 @@ A Tarefa deverá ser apresentada na aula do dia 22 de setembro para o professor.
 
 O trabalho deve ser de autoria dos alunos de cada grupo. O uso de Inteligência Artificial deve ser declarado qual ferramenta foi usada e com qual propósito.
 
+## Observações
+
+Para rodar os testes com Mockito, é necessário os seguintes argumentos na JVM:
+
+```
+	--add-opens java.base/java.lang=ALL-UNNAMED
+```
+
 ## Desenvolvido por
 
 Trabalho desenvolvido por:
