@@ -4,12 +4,12 @@ Segundo trabalho desenvolvido para a disciplina de Teste de Software da Universi
 
 Utilizado como base um sistema bancário simples passado pelo professor, e realizamos as seguintes melhorias:
 
-- Reestruturação total da arquitetura do projeto para uma arquitetura MVC
-- Adicionado interface gráfica para utilização invés do prompt de comando
-- Adicionada persistência de dados com PostgreSQL
-- Implementada as funcionalidades de transferência de valores entre diferentes contas
-- Criado testes unitários e de integração utilizando JUnit e Mockito
-- Realzado testes manuais
+- Reestruturação total da arquitetura do projeto para uma arquitetura MVC.
+- Adição de interface gráfica para utilização em vez do prompt de comando.
+- Adição de persistência de dados com PostgreSQL.
+- Implementação das funcionalidades de transferência de valores entre diferentes contas.
+- Criação de testes unitários e de integração utilizando JUnit e Mockito.
+- Realização de testes manuais de todas as funcionalidades.
 
 ## Requerimentos
 
@@ -45,4 +45,4 @@ Trabalho desenvolvido por:
 
 ## Uso de Inteligência Artificial
 
-Para o desenvolvimento dos testes do trabalho, ouve auxílio de  _autocomplete_  do copilot com o agente ChatGPT-4.1.
+Para o desenvolvimento dos testes do trabalho, houve auxílio de _autocomplete_ do Copilot e do agente ChatGPT-4.1.
