@@ -27,7 +27,7 @@ public class MenuTeste {
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
 
-        // Use reflection to call private method
+        // Acessar método privado via reflexão
         try {
             java.lang.reflect.Method printMenu = Menu.class.getDeclaredMethod("printMenu");
             printMenu.setAccessible(true);
@@ -51,7 +51,7 @@ public class MenuTeste {
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
 
-        // Use reflection to call private method
+        // Acessar método privado via reflexão
         try {
             java.lang.reflect.Method pulalinha = Menu.class.getDeclaredMethod("pulalinha");
             pulalinha.setAccessible(true);
@@ -70,7 +70,7 @@ public class MenuTeste {
     public void testInicializaSistemaBancario() throws Exception {
         menu.inicializaSistemaBancario();
 
-        // Access private fields using reflection
+        // Acessar campos privado via reflexão
         Field gerClientesField = Menu.class.getDeclaredField("gerClientes");
         Field gerContasField = Menu.class.getDeclaredField("gerContas");
         gerClientesField.setAccessible(true);
@@ -100,7 +100,5 @@ public class MenuTeste {
         assertEquals(3, conta1.getId());
         assertEquals(2, conta2.getId());
     }
-
-    // Note: menu_principal() is interactive and not practical to unit test without refactoring.
 }
 
