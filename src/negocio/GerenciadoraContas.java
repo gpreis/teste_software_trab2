@@ -3,7 +3,7 @@ package negocio;
 import java.util.List;
 
 /**
- * Classe de negócio para realizar operações sobre as contas do banco.
+ * Classe de negï¿½cio para realizar operaï¿½ï¿½es sobre as contas do banco.
  * 
  */
 public class GerenciadoraContas {
@@ -25,7 +25,7 @@ public class GerenciadoraContas {
 	/**
 	 * Pesquisa por uma conta a partir do seu ID.
 	 * @param idConta id da conta a ser pesquisada
-	 * @return a conta pesquisada ou null, caso não seja encontrada
+	 * @return a conta pesquisada ou null, caso nï¿½o seja encontrada
 	 */
 	public ContaCorrente pesquisaConta (int idConta) {
 
@@ -37,7 +37,7 @@ public class GerenciadoraContas {
 	}
 	
 	/**
-	 * Adiciona uma nova conta à lista de contas do banco.
+	 * Adiciona uma nova conta ï¿½ lista de contas do banco.
 	 * @param novaConta nova conta a ser adicionada
 	 */
 	public void adicionaConta (ContaCorrente novaConta) {
@@ -47,7 +47,7 @@ public class GerenciadoraContas {
 	/**
 	 * Remove conta da lista de contas do banco.
 	 * @param idConta ID da conta a ser removida 
-	 * @return true se a conta foi removida. False, caso contrário.
+	 * @return true se a conta foi removida. False, caso contrï¿½rio.
 	 */
 	public boolean removeConta (int idConta) {
 		
@@ -57,7 +57,7 @@ public class GerenciadoraContas {
 			ContaCorrente conta = contasDoBanco.get(i);
 			if(conta.getId() == idConta){
 				contasDoBanco.remove(i);
-				break;
+				contaRemovida = true;
 			}
 		}
 		
@@ -65,9 +65,9 @@ public class GerenciadoraContas {
 	}
 
 	/**
-	 * Informa se uma determinada conta está ativa ou não.
-	 * @param idConta ID da conta cujo status será verificado
-	 * @return true se a conta está ativa. False, caso contrário. 
+	 * Informa se uma determinada conta estï¿½ ativa ou nï¿½o.
+	 * @param idConta ID da conta cujo status serï¿½ verificado
+	 * @return true se a conta estï¿½ ativa. False, caso contrï¿½rio. 
 	 */
 	public boolean contaAtiva (int idConta) {
 		
@@ -87,12 +87,12 @@ public class GerenciadoraContas {
 	
 	/**
 	 * Transfere um determinado valor de uma conta Origem para uma conta Destino.
-	 * Caso não haja saldo suficiente, o valor não será transferido.
+	 * Caso nï¿½o haja saldo suficiente, o valor nï¿½o serï¿½ transferido.
 	 * 
-	 * @param idContaOrigem conta que terá o valor deduzido
+	 * @param idContaOrigem conta que terï¿½ o valor deduzido
 	 * @param valor valor a ser transferido
-	 * @param idContaDestino conta que terá o valor acrescido
-	 * @return true, se a transferência foi realizada com sucesso.
+	 * @param idContaDestino conta que terï¿½ o valor acrescido
+	 * @return true, se a transferï¿½ncia foi realizada com sucesso.
 	 */
 	public boolean transfereValor (int idContaOrigem, double valor, int idContaDestino) {
 		
@@ -101,11 +101,11 @@ public class GerenciadoraContas {
 		ContaCorrente contaOrigem = pesquisaConta(idContaOrigem);
 		ContaCorrente contaDestino = pesquisaConta(idContaDestino);
 		
-//		if(contaOrigem.getSaldo() >= valor){
+		if(contaOrigem.getSaldo() >= valor){
 			contaDestino.setSaldo(contaDestino.getSaldo() + valor);
 			contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);
 			sucesso = true;
-//		}
+		}
 	
 		return sucesso;
 	}
